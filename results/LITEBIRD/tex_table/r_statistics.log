@@ -1,0 +1,167 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  28 MAR 2020 01:58
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**r_statistics.tex
+(./r_statistics.tex
+LaTeX2e <2017-04-15>
+Babel <3.10> and hyphenation patterns for 84 language(s) loaded.
+
+./r_statistics.tex:1: LaTeX Error: Environment longtable undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \begin{longtable}
+                     {cccccc}
+? 
+
+./r_statistics.tex:1: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \begin{longtable}{c
+                       ccccc}
+? 
+Missing character: There is no c in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no c in font nullfont!
+./r_statistics.tex:2: Undefined control sequence.
+l.2 \toprule
+            
+? 
+./r_statistics.tex:3: Misplaced alignment tab character &.
+l.3         &
+                  &  $r_{\rm bias} \\ \times 10^{-3}$  &  $\sigma_r^- \n \ti...
+
+? 
+./r_statistics.tex:3: Misplaced alignment tab character &.
+l.3         &     &
+                     $r_{\rm bias} \\ \times 10^{-3}$  &  $\sigma_r^- \n \ti...
+
+? 
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 3.
+./r_statistics.tex:3: Undefined control sequence.
+l.3         &     &  $r_{\rm
+                             bias} \\ \times 10^{-3}$  &  $\sigma_r^- \n \ti...
+
+? 
+./r_statistics.tex:3: Misplaced alignment tab character &.
+l.3 ...     &  $r_{\rm bias} \\ \times 10^{-3}$  &
+                                                    $\sigma_r^- \n \times 10...
+
+? 
+./r_statistics.tex:3: Undefined control sequence.
+l.3 ...bias} \\ \times 10^{-3}$  &  $\sigma_r^- \n
+                                                   \times 10^{-3}$ &  $\sigm...
+
+? 
+./r_statistics.tex:3: Misplaced alignment tab character &.
+l.3 ...^{-3}$  &  $\sigma_r^- \n \times 10^{-3}$ &
+                                                    $\sigma_r^+  \times 10^{...
+
+? 
+./r_statistics.tex:3: Misplaced alignment tab character &.
+l.3 ... 10^{-3}$ &  $\sigma_r^+  \times 10^{-3}$ &
+                                                    $r_{95}  \times 10^{-3}$ \\
+
+? 
+Missing character: There is no C in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no e in font nullfont!
+./r_statistics.tex:4: Misplaced alignment tab character &.
+l.4 Case &
+           Alens &                                    &                     ...
+
+? 
+Missing character: There is no A in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no s in font nullfont!
+./r_statistics.tex:4: Misplaced alignment tab character &.
+l.4 Case & Alens &
+                                                      &                     ...
+
+? 
+./r_statistics.tex:4: Misplaced alignment tab character &.
+l.4 ...lens &                                    &
+                                                                            ...
+
+? 
+./r_statistics.tex:4: Misplaced alignment tab character &.
+l.4 ...        &                                 &
+                                                                            ...
+
+? 
+./r_statistics.tex:4: Misplaced alignment tab character &.
+l.4 ...          &                               &
+                                                                             \\
+
+? 
+./r_statistics.tex:5: Undefined control sequence.
+<recently read> \midrule 
+                         
+l.5 \midrule
+            
+? 
+./r_statistics.tex:6: Undefined control sequence.
+l.6 \endhead
+            
+? 
+./r_statistics.tex:7: Undefined control sequence.
+l.7 \midrule
+            
+? 
+./r_statistics.tex:8: Misplaced \omit.
+\multispan ->\omit 
+                   \@multispan 
+l.8 \multicolumn{3}{r}{{Continued on next page}}
+                                                 \\
+? 
+./r_statistics.tex:8: Misplaced \span.
+\sp@n ->\span 
+              \omit \advance \@multicnt \m@ne 
+l.8 \multicolumn{3}{r}{{Continued on next page}}
+                                                 \\
+? 
+./r_statistics.tex:8: Misplaced \omit.
+\sp@n ->\span \omit 
+                    \advance \@multicnt \m@ne 
+l.8 \multicolumn{3}{r}{{Continued on next page}}
+                                                 \\
+? 
+./r_statistics.tex:8: Misplaced \span.
+\sp@n ->\span 
+              \omit \advance \@multicnt \m@ne 
+l.8 \multicolumn{3}{r}{{Continued on next page}}
+                                                 \\
+? 
+./r_statistics.tex:8: Emergency stop.
+\sp@n ->\span 
+              \omit \advance \@multicnt \m@ne 
+l.8 \multicolumn{3}{r}{{Continued on next page}}
+                                                 \\
+End of file on the terminal!
+
+ 
+Here is how much of TeX's memory you used:
+ 9 strings out of 492995
+ 191 string characters out of 6132704
+ 54074 words of memory out of 5000000
+ 3662 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 18i,2n,12p,182b,58s stack positions out of 5000i,500n,10000p,200000b,80000s
+./r_statistics.tex:8:  ==> Fatal error occurred, no output PDF file produced!
