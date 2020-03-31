@@ -18,16 +18,18 @@ from . import project_path
 
 
 class setup_r_forecasts(object):
-	def __init__(self,instrument="LITEBIRD",Alens_vals=[0.0,0.3,0.6,0.9],rprop=[1e-4,1e-1,1000],data_outpath=[],verbose=False):
+	def __init__(self,instrument="LITEBIRD",Alens_vals=[0.0,0.3,0.6,0.9],rprop=[1e-4,1e-1,1000],data_outpath=[],verbose=False,only_return_dict=True):
 		self.data_outpath=data_outpath
 		self.instrument=instrument
 		self.Alens_vals=Alens_vals
 		self.verbose=verbose
+		self.only_return_dict=only_return_dict
 
-		if self.instrument=="LITEBIRD":
-			self.dd=gd.get_litebird_data(only_return_dict=False,outpath=self.data_outpath,verbose=self.verbose)
-		elif self.instrument=="PICO":
-			self.dd=gd.get_pico_data(only_return_dict=False,outpath=self.data_outpath,verbose=self.verbose)
+#		if self.instrument=="LITEBIRD":
+#			self.dd=gd.get_litebird_data(only_return_dict=False,outpath=self.data_outpath,verbose=self.verbose)
+#		elif self.instrument=="PICO":
+#			self.dd=gd.get_pico_data(only_return_dict=False,outpath=self.data_outpath,verbose=self.verbose)
+		self.dd=gd.get_data(exprmnt=self.instrument,only_return_dict=self.only_return_dict,outpath=self.data_outpath,verbose=self.verbose)
 
 		# You can update these when you run tabulate_rstat
 		self.rprop=rprop
