@@ -24,14 +24,13 @@ mom_lbl["d2f_dust/dbeta2"]=r"$\frac{d^2 I_{\rm dust}}{d^2 \beta}$"
 mom_lbl["d2f_dust/dbetadT"]=r"$\frac{d^2 I_{\rm dust}}{d \beta d T}$"
 mom_lbl["d2f_dust/dT2"]=r"$\frac{d^2 I_{\rm dust}}{d^2 T}$"
 
-# LITEBIRD --------------------------------------------------------------
+# Descoped PICO --------------------------------------------------------------
+# Frequencies : 20-462 GHz
 exprmnt=collections.OrderedDict()
-#exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/LiteBIRD/outputs22/"
-#exprmnt["outdatapath"]= project_path +  "/dataout/litebird/"
-exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/LiteBIRD/outputs22DOUBLE/"
-exprmnt["outdatapath"]= project_path +  "/dataout/litebird_double/"
+exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/PICO/descope_90.91_highnu/"
+exprmnt["outdatapath"]= project_path + "/dataout/dpico_lite/"
+exprmnt["simname"]="PICO"
 
-exprmnt["simname"]="LITEBIRD"
 exprmnt["datadef"] = {
 "cMILC00" : {"midfix" : "_" , "moments": ["cmb"], "comment" : None},
 "cMILC01" : {"midfix" : "0m_" , "moments":["cmb","f_sync"], "comment" : None},
@@ -60,10 +59,10 @@ for key in range(len(exprmnt["datadef"].keys())):
     exprmnt["fnames"][adr]["noise"]=exprmnt["simname"] + noise_prefix
     exprmnt["fnames"][adr]["noise"]=exprmnt["fnames"][adr]["noise"]+exprmnt["datadef"][adr]["midfix"] + suffix
 
-exprmnt["mask_path"]="/scratch/nas_vulture/scratch/mremazei/LiteBIRD/outputs2/"
+exprmnt["mask_path"]="/raid/scratch/mremazei/WORK/GNILC_CMB/litebird/cosmo/PICO/"
 exprmnt["mask_fname"]="apodized_masks_v2.sav"
-exprmnt["cl_path"]="/raid/scratch/mremazei/WORK/GNILC_CMB/litebird/cosmo/LITEBIRD/"
-exprmnt["cl_fname"]="Cls_Planck2018_lensed_scalar.fits"
+exprmnt["cl_path"]="/raid/scratch/mremazei/WORK/GNILC_CMB/litebird/cosmo/PICO/"
+exprmnt["cl_fname"]="ffp10_lensedCls.dat"
 
 exprmnt["lbl"]={}
 exprmnt["npar"]={}
@@ -78,4 +77,6 @@ for idx in range(len(exprmnt["datadef"].keys())):
 			exprmnt["lbl"][adr]=exprmnt["lbl"][adr] + mom_lbl[mom]
 	if exprmnt["datadef"][adr]["comment"]=="Hybrid":
 		exprmnt["lbl"][adr]=exprmnt["lbl"][adr] + " (H)"
+
+
 

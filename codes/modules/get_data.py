@@ -19,6 +19,9 @@ def get_data(exprmnt,outpath=[],only_return_dict=True,verbose=False):
 		import dpico_dataio_dict as dd
 	elif exprmnt=="LITEBIRD":
 		import litebird_dataio_dict as dd
+	elif exprmnt=="DPICO_LITE":
+		import dpico_lite_dataio_dict as dd
+
 
 	if outpath==[]:
 		outpath=dd.exprmnt["outdatapath"]

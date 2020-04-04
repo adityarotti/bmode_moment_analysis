@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  30 MAR 2020 17:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  31 MAR 2020 17:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -453,7 +453,7 @@ pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../figures/ps_and_bbposterir
 _cMILC14.pdf): PDF inclusion: multiple pdfs with page group included in a singl
 e page
 >]
-<../figures/LITEBIRD_summary_statistics.pdf, id=1240, 963.6596pt x 272.34938pt>
+<../figures/LITEBIRD_summary_statistics.pdf, id=1241, 963.6596pt x 272.34938pt>
 File: ../figures/LITEBIRD_summary_statistics.pdf Graphic file (type pdf)
 <use ../figures/LITEBIRD_summary_statistics.pdf>
 Package pdftex.def Info: ../figures/LITEBIRD_summary_statistics.pdf used on inp
@@ -469,7 +469,7 @@ Overfull \hbox (71.9989pt too wide) in paragraph at lines 60--61
 Here is how much of TeX's memory you used:
  1726 strings out of 492995
  27105 string characters out of 6132704
- 97739 words of memory out of 5000000
+ 95739 words of memory out of 5000000
  5259 multiletter control sequences out of 15000+600000
  8196 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -483,9 +483,9 @@ e1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1
 ublic/amsfonts/cm/cmr17.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmr6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmr8.pfb>
-Output written on litebird_r_statistics_mask46.pdf (10 pages, 592692 bytes).
+Output written on litebird_r_statistics_mask46.pdf (10 pages, 584035 bytes).
 PDF statistics:
- 1331 PDF objects out of 1440 (max. 8388607)
+ 1332 PDF objects out of 1440 (max. 8388607)
  210 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  86 words of extra memory for PDF output out of 10000 (max. 10000000)

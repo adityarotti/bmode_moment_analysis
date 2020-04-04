@@ -35,8 +35,9 @@ class setup_r_forecasts(object):
 		self.rprop=rprop
 		self.rvalues=np.logspace(np.log10(rprop[0]),np.log10(rprop[1]),rprop[2])
 
-	def setup_master(self,lmax=450,dell=8,fwhm=40.,mask=[]):
+	def setup_master(self,lmin=2,lmax=450,dell=8,fwhm=40.,mask=[]):
 		self.fwhm=fwhm
+		self.lmin=lmin
 		self.lmax=lmax
 		self.dell=dell
 		
@@ -53,7 +54,7 @@ class setup_r_forecasts(object):
 		
 		# Setup Master
 		beam=h.gauss_beam(fwhm=(self.fwhm/60.)*np.pi/180.,lmax=self.lmax)*h.pixwin(self.nside)[:self.lmax+1]
-		self.master=bm.binned_master(self.mask,2,self.lmax,self.masklmax,beam=beam,deltaell=self.dell)
+		self.master=bm.binned_master(self.mask,self.lmin,self.lmax,self.masklmax,beam=beam,deltaell=self.dell)
 
 	def run_spectral_analysis(self,):
 		self.clbin={}
@@ -98,7 +99,7 @@ class setup_r_forecasts(object):
 			cldata=h.alm2cl(h.map2alm(data*self.mask,lmax=self.lmax))
 			self.lbin,self.clbin["frg"][adr]=self.master.return_bmcs(cldata)
 
-	def tabulate_rlike(self,Alens_vals=[0.0,0.3,0.6,0.9],rprop=[1e-4,1e-1,1000],compute_map=False):
+	def tabulate_rlike(self,Alens_vals=[0.0,0.3,0.6,0.9],rprop=[1e-4,1e-1,1000],compute_map=False,rvar=1):
 		self.Alens_vals=Alens_vals
 		self.rprop=rprop
 		self.rvalues=np.logspace(np.log10(rprop[0]),np.log10(rprop[1]),rprop[2])
@@ -109,7 +110,7 @@ class setup_r_forecasts(object):
 			self.rlike_dict[adr]=collections.OrderedDict()
 			self.rlike_map_dict[adr]=collections.OrderedDict()
 			for Alens in self.Alens_vals:
-				self.rlike_dict[adr][Alens]=self.return_r_likelihood(adr,Alens)
+				self.rlike_dict[adr][Alens]=self.return_r_likelihood(adr,Alens,rvar)
 				if compute_map:
 					self.rlike_map_dict[adr][Alens]=self.return_r_likelihood_map(adr,Alens)
 
@@ -121,12 +122,12 @@ class setup_r_forecasts(object):
 #		data=fn_like(self.rvalues) ; data=data-min(data)
 #		return np.exp(-data/2.)
 
-	def return_r_likelihood(self,adr,Alens):
-		var_other=(Alens*self.clbin["cmb"])**2. + self.clbin["noise"][adr]**2. + self.clbin["frg"][adr]**2.
-#		var=(self.clbin["obs"][adr] - (1.-Alens)*self.clbin["cmb"])**2.
+	def return_r_likelihood(self,adr,Alens,rvar=1.):
+#		var_other=(Alens*self.clbin["cmb"])**2. + self.clbin["noise"][adr]**2. + self.clbin["frg"][adr]**2.
+		var_other=(self.clbin["obs"][adr] - (1.-Alens)*self.clbin["cmb"])**2.
 		data=np.zeros_like(self.rvalues)
 		for ir,r in enumerate(self.rvalues):
-			var=(var_other + (r*self.clbin["bb"])**2.)*(2./((2.*self.lbin+1)*self.dell*self.fsky))
+			var=(var_other + rvar*(r*self.clbin["bb"])**2.)*(2./((2.*self.lbin+1)*self.dell*self.fsky))
 			data[ir] = np.sum((self.clbin["frg"][adr] - r*self.clbin["bb"])**2./var)
 		data=data-min(data)
 		return np.exp(-data/2.)
