@@ -14,13 +14,11 @@ def ensure_dir(file_path):
 
 def get_data(exprmnt,outpath=[],only_return_dict=True,verbose=False):
 	if exprmnt=="PICO":
-		import pico_dataio_dict as dd
-	elif exprmnt=="DPICO":
-		import dpico_dataio_dict as dd
+		import dataio_dict_pico as dd
 	elif exprmnt=="LITEBIRD":
-		import litebird_dataio_dict as dd
-	elif exprmnt=="DPICO_LITE":
-		import dpico_lite_dataio_dict as dd
+		import dataio_dict_litebird as dd
+	elif exprmnt=="PICO_LITE":
+		import dataio_dict_pico_lite as dd
 
 
 	if outpath==[]:
@@ -57,8 +55,8 @@ def get_data(exprmnt,outpath=[],only_return_dict=True,verbose=False):
 				if verbose:
 					print filename + " exists"
 			else:
-				print "Getting : ", filename
 				if verbose:
+					print "Getting : ", filename
 					os.system(cmd)
 		except:
 			print "Failed to execute command"
@@ -80,7 +78,7 @@ def get_data(exprmnt,outpath=[],only_return_dict=True,verbose=False):
 		except:
 			print "Failed to execute command"
 
-	# True CMB
+	# Get CMB solution maps
 	for idx in range(len(dd.exprmnt["datadef"].keys())):
 		adr="cMILC" +str(idx).zfill(2)
 		cmd = base_cmd + dd.exprmnt["indatapath"] + "/" + dd.exprmnt["fnames"][adr]["cmb"] + " " + outpath + "/"
@@ -99,8 +97,26 @@ def get_data(exprmnt,outpath=[],only_return_dict=True,verbose=False):
 			except:
 				print "Failed to execute command"
 
+		# Get noise maps
 		cmd = base_cmd + dd.exprmnt["indatapath"] + "/" + dd.exprmnt["fnames"][adr]["noise"] + " " + outpath + "/"
 		filename=outpath + "/" + dd.exprmnt["fnames"][adr]["noise"]
+		if verbose:
+			print cmd
+		if not(only_return_dict):
+			try:
+				if os.path.isfile(filename):
+					if verbose:
+						print filename + " exists"
+				else:
+					if verbose:
+						print "Getting : ", filename
+					os.system(cmd)
+			except:
+				print "Failed to execute command"
+				
+		# Get frg maps
+		cmd = base_cmd + dd.exprmnt["indatapath"] + "/" + dd.exprmnt["fnames"][adr]["frg"] + " " + outpath + "/"
+		filename=outpath + "/" + dd.exprmnt["fnames"][adr]["frg"]
 		if verbose:
 			print cmd
 		if not(only_return_dict):

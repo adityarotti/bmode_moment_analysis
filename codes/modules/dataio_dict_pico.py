@@ -10,6 +10,7 @@ from . import project_path
 
 cmb_prefix="_CMB_NILC_BB"
 noise_prefix="_CMB_NILC_noise"
+frg_prefix="_CMB_NILC_FG"
 suffix="res40acm.fits"
 
 mom_lbl={}
@@ -36,9 +37,16 @@ exprmnt=collections.OrderedDict()
 ## No regularization noise here. Double precision solved the problem + dust (1/T) derivatives
 #exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/PICO/90.91DOUBLE2/"
 #exprmnt["outdatapath"]= project_path + "/dataout/pico_1bT/"
-#No regularization noise here. Double precision solved the problem + more low ell needlets
-exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/PICO/90.91NEED/"
-exprmnt["outdatapath"]= project_path + "/dataout/pico_low_needlets/"
+##No regularization noise here. Double precision solved the problem + more low ell needlets
+#exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/PICO/90.91NEED/"
+#exprmnt["outdatapath"]= project_path + "/dataout/pico_low_needlets/"
+#Final runs
+exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/PICO/90.91DOUBLE2/"
+exprmnt["outdatapath"]= project_path + "/dataout/pico_double/"
+#Final runs - testing with masking the B-mode map before covariance evaluation.
+#exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/PICO/90.91DOUBLE3/"
+#exprmnt["outdatapath"]= project_path + "/dataout/pico_double_covmask/"
+
 
 exprmnt["simname"]="PICO"
 exprmnt["datadef"] = {
@@ -48,15 +56,15 @@ exprmnt["datadef"] = {
 "cMILC03" : {"midfix" : "2m_" , "moments":["cmb","f_sync","f_dust"], "comment" : None},
 "cMILC04" : {"midfix" : "2m1_" , "moments":["cmb","f_dust", "df_dust/dbeta"], "comment" : None},
 "cMILC05" : {"midfix" : "3m1_" , "moments":["cmb","f_sync","f_dust", "df_dust/dbeta"], "comment" : None},
-"cMILC06" : {"midfix" : "2m2m_", "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta","df_dust/dbeta"], "comment" : "Hybrid"},
-"cMILC07" : {"midfix" : "2m3m_" , "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta", "df_dust/dT"], "comment" : None},
-"cMILC08" : {"midfix" : "2m2m1m_" , "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta","df_dust/dT", "d2f_dust/dT2"], "comment" : None},
-"cMILC09" : {"midfix" : "2m2m1mh_", "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta","df_dust/dT", "d2f_dust/dT2"], "comment" : "Hybrid"},
-"cMILC10" : {"midfix" : "2m2m2m_" , "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta", "df_dust/dT", "d2f_sync/dbeta2", "d2f_dust/dT2"], "comment" : None},
-"cMILC11" : {"midfix" : "2m2m2mh_", "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta", "df_dust/dT", "d2f_sync/dbeta2", "d2f_dust/dT2"], "comment" : "Hybrid"},
-"cMILC12" : {"midfix" :"1_","moments":["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta", "df_dust/dT","d2f_sync/dbeta2", "d2f_dust/dT2","d2f_dust/dbetadT"], "comment" : None},
-"cMILC13" : {"midfix" : "1h_","moments" : ["cmb","f_sync","f_dust","df_sync/dbeta","df_dust/dbeta","df_dust/dT","d2f_sync/dbeta2","d2f_dust/dT2","d2f_dust/dbetadT"], "comment" : "Hybrid"},
-"cMILC14" : {"midfix" : "2_" , "moments" : ["cmb", "f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta", "df_dust/dT", "d2f_sync/dbeta2", "d2f_dust/dT2", "d2f_dust/dbetadT", "d2f_dust/dbeta2"], "comment" : None},
+"cMILC06" : {"midfix" : "2m3m_" , "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta", "df_dust/dT"], "comment" : None},
+"cMILC07" : {"midfix" : "2m2m1m_" , "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta","df_dust/dT", "d2f_dust/dT2"], "comment" : None},
+"cMILC08" : {"midfix" : "2m2m2m_" , "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta", "df_dust/dT", "d2f_sync/dbeta2", "d2f_dust/dT2"], "comment" : None},
+"cMILC09" : {"midfix" :"1_","moments":["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta", "df_dust/dT","d2f_sync/dbeta2", "d2f_dust/dT2","d2f_dust/dbetadT"], "comment" : None},
+#"cMILC10" : {"midfix" : "2_" , "moments" : ["cmb", "f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta", "df_dust/dT", "d2f_sync/dbeta2", "d2f_dust/dT2", "d2f_dust/dbetadT", "d2f_dust/dbeta2"], "comment" : None},
+"cMILC10" : {"midfix" : "2m2m_", "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta","df_dust/dbeta"], "comment" : "Hybrid"},
+#"cMILC12" : {"midfix" : "2m2m1mh_", "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta","df_dust/dT", "d2f_dust/dT2"], "comment" : "Hybrid"},
+#"cMILC13" : {"midfix" : "2m2m2mh_", "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta", "df_dust/dT", "d2f_sync/dbeta2", "d2f_dust/dT2"], "comment" : "Hybrid"},
+#"cMILC14" : {"midfix" : "1h_","moments" : ["cmb","f_sync","f_dust","df_sync/dbeta","df_dust/dbeta","df_dust/dT","d2f_sync/dbeta2","d2f_dust/dT2","d2f_dust/dbetadT"], "comment" : "Hybrid"}
 }
 
 exprmnt["fnames"]={}
@@ -68,6 +76,8 @@ for key in range(len(exprmnt["datadef"].keys())):
     exprmnt["fnames"][adr]["cmb"]=exprmnt["fnames"][adr]["cmb"]+exprmnt["datadef"][adr]["midfix"] + suffix
     exprmnt["fnames"][adr]["noise"]=exprmnt["simname"] + noise_prefix
     exprmnt["fnames"][adr]["noise"]=exprmnt["fnames"][adr]["noise"]+exprmnt["datadef"][adr]["midfix"] + suffix
+    exprmnt["fnames"][adr]["frg"]=exprmnt["simname"] + frg_prefix
+    exprmnt["fnames"][adr]["frg"]=exprmnt["fnames"][adr]["frg"]+exprmnt["datadef"][adr]["midfix"] + suffix
 
 exprmnt["mask_path"]="/scratch/nas_vulture/scratch/mremazei/LiteBIRD/outputs2/"
 exprmnt["mask_fname"]="apodized_masks_v2.sav"

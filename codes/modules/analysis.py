@@ -60,7 +60,8 @@ class setup_r_forecasts(object):
 		self.clbin={}
 		
 		# Get the theory lensed Cls
-		data=np.loadtxt(project_path + "/dataout/pico/ffp10_lensedCls.dat")
+#		data=np.loadtxt(project_path + "/dataout/pico/ffp10_lensedCls.dat")
+		data=np.loadtxt(self.dd["outdatapath"] + "ffp10_lensedCls.dat")
 		ell=data[:self.lmax-1,0] ; cldata=data[:self.lmax-1,3]
 		cldata=cldata*2.*np.pi/(ell*(ell+1))
 		ell=np.append([0.,1.],ell)
@@ -81,6 +82,7 @@ class setup_r_forecasts(object):
 		self.lbin,self.clbin["cmb"]=self.master.return_bmcs(cldata)
 
 		self.clbin["frg"]={}
+		self.clbin["frg1"]={}
 		self.clbin["obs"]={}
 		self.clbin["noise"]={}
 		self.adr_list=["cMILC" + str(idx).zfill(2) for idx in range(len(self.dd["fnames"].keys()))]
@@ -94,10 +96,14 @@ class setup_r_forecasts(object):
 			noise=h.read_map(self.dd["outdatapath"] + self.dd["fnames"][adr]["noise"],verbose=False)
 			cldata=h.alm2cl(h.map2alm(noise*self.mask,lmax=self.lmax))
 			self.lbin,self.clbin["noise"][adr]=self.master.return_bmcs(cldata)
-			# Frg.
+			# Frg. - estimated from obs, cmb and noise
 			data=obs-cmb-noise
 			cldata=h.alm2cl(h.map2alm(data*self.mask,lmax=self.lmax))
 			self.lbin,self.clbin["frg"][adr]=self.master.return_bmcs(cldata)
+			# Frg - directly estimated in component separation
+			data=h.read_map(self.dd["outdatapath"] + self.dd["fnames"][adr]["frg"],verbose=False)
+			cldata=h.alm2cl(h.map2alm(data*self.mask,lmax=self.lmax))
+			self.lbin,self.clbin["frg1"][adr]=self.master.return_bmcs(cldata)
 
 	def tabulate_rlike(self,Alens_vals=[0.0,0.3,0.6,0.9],rprop=[1e-4,1e-1,1000],compute_map=False,rvar=1):
 		self.Alens_vals=Alens_vals
@@ -134,8 +140,8 @@ class setup_r_forecasts(object):
 
 	def return_r_likelihood_map(self,adr,Alens):
 		like_map=np.zeros((len(self.rvalues),len(self.lbin)),dtype=np.float64)
-		var=(Alens*self.clbin["cmb"])**2. + self.clbin["noise"][adr]**2. + self.clbin["frg"][adr]**2.
-#		var=(self.clbin["obs"][adr] - (1.-Alens)*self.clbin["cmb"])**2.
+#		var=(Alens*self.clbin["cmb"])**2. + self.clbin["noise"][adr]**2. + self.clbin["frg"][adr]**2.
+		var=(self.clbin["obs"][adr] - (1.-Alens)*self.clbin["cmb"])**2.
 		var=var*(2./((2.*self.lbin+1)*self.dell*self.fsky))
 		for il, ell in enumerate(self.lbin):
 			fn_like = np.vectorize(lambda x : np.exp(-np.sum((self.clbin["frg"][adr][il] - x*self.clbin["bb"][il])**2./var[il])/2.))
