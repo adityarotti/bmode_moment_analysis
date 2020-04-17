@@ -53,8 +53,7 @@ exprmnt["datadef"] = {
 
 exprmnt["fnames"]={}
 exprmnt["cmb_fname"]="smoothed_input_cmb_bmode_map_v2.fits"
-for key in range(len(exprmnt["datadef"].keys())):
-    adr="cMILC" + str(key).zfill(2)
+for adr in exprmnt["datadef"].keys():
     exprmnt["fnames"][adr]={}
     exprmnt["fnames"][adr]["cmb"]=exprmnt["simname"] + cmb_prefix
     exprmnt["fnames"][adr]["cmb"]=exprmnt["fnames"][adr]["cmb"]+exprmnt["datadef"][adr]["midfix"] + suffix
@@ -70,8 +69,7 @@ exprmnt["cl_fname"]="ffp10_lensedCls.dat"
 
 exprmnt["lbl"]={}
 exprmnt["npar"]={}
-for idx in range(len(exprmnt["datadef"].keys())):
-	adr="cMILC" + str(idx).zfill(2)
+for adr in exprmnt["datadef"].keys():
 	exprmnt["npar"][adr]=len(exprmnt["datadef"][adr]["moments"])
 	exprmnt["lbl"][adr]=adr+" : "
 	for imom,mom in  enumerate(exprmnt["datadef"][adr]["moments"]):

@@ -85,7 +85,7 @@ class setup_r_forecasts(object):
 		self.clbin["frg1"]={}
 		self.clbin["obs"]={}
 		self.clbin["noise"]={}
-		self.adr_list=["cMILC" + str(idx).zfill(2) for idx in range(len(self.dd["fnames"].keys()))]
+		self.adr_list=sorted(self.dd["fnames"].keys())
 
 		for adr in self.adr_list:
 			# Obs.

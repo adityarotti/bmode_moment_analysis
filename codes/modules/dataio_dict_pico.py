@@ -49,19 +49,20 @@ exprmnt["outdatapath"]= project_path + "/dataout/pico_double/"
 
 
 exprmnt["simname"]="PICO"
+exprmnt["datadef"]=collections.OrderedDict()
 exprmnt["datadef"] = {
 "cMILC00" : {"midfix" : "_" , "moments": ["cmb"], "comment" : None},
 "cMILC01" : {"midfix" : "0m_" , "moments":["cmb","f_sync"], "comment" : None},
 "cMILC02" : {"midfix" : "1m_" , "moments":["cmb","f_dust"], "comment" : None},
 "cMILC03" : {"midfix" : "2m_" , "moments":["cmb","f_sync","f_dust"], "comment" : None},
 "cMILC04" : {"midfix" : "2m1_" , "moments":["cmb","f_dust", "df_dust/dbeta"], "comment" : None},
-"cMILC05" : {"midfix" : "3m1_" , "moments":["cmb","f_sync","f_dust", "df_dust/dbeta"], "comment" : None},
-"cMILC06" : {"midfix" : "2m3m_" , "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta", "df_dust/dT"], "comment" : None},
-"cMILC07" : {"midfix" : "2m2m1m_" , "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta","df_dust/dT", "d2f_dust/dT2"], "comment" : None},
-"cMILC08" : {"midfix" : "2m2m2m_" , "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta", "df_dust/dT", "d2f_sync/dbeta2", "d2f_dust/dT2"], "comment" : None},
-"cMILC09" : {"midfix" :"1_","moments":["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta", "df_dust/dT","d2f_sync/dbeta2", "d2f_dust/dT2","d2f_dust/dbetadT"], "comment" : None},
+"cMILC06" : {"midfix" : "3m1_" , "moments":["cmb","f_sync","f_dust", "df_dust/dbeta"], "comment" : None},
+"cMILC08" : {"midfix" : "2m3m_" , "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta", "df_dust/dT"], "comment" : None},
+"cMILC09" : {"midfix" : "2m2m1m_" , "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta","df_dust/dT", "d2f_dust/dT2"], "comment" : None},
+"cMILC10" : {"midfix" : "2m2m2m_" , "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta", "df_dust/dT", "d2f_sync/dbeta2", "d2f_dust/dT2"], "comment" : None},
+"cMILC11" : {"midfix" :"1_","moments":["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta", "df_dust/dT","d2f_sync/dbeta2", "d2f_dust/dT2","d2f_dust/dbetadT"], "comment" : None},
 #"cMILC10" : {"midfix" : "2_" , "moments" : ["cmb", "f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta", "df_dust/dT", "d2f_sync/dbeta2", "d2f_dust/dT2", "d2f_dust/dbetadT", "d2f_dust/dbeta2"], "comment" : None},
-"cMILC10" : {"midfix" : "2m2m_", "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta","df_dust/dbeta"], "comment" : "Hybrid"},
+"cMILC12" : {"midfix" : "2m2m_", "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta","df_dust/dbeta"], "comment" : "Hybrid"},
 #"cMILC12" : {"midfix" : "2m2m1mh_", "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta","df_dust/dT", "d2f_dust/dT2"], "comment" : "Hybrid"},
 #"cMILC13" : {"midfix" : "2m2m2mh_", "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta", "df_dust/dT", "d2f_sync/dbeta2", "d2f_dust/dT2"], "comment" : "Hybrid"},
 #"cMILC14" : {"midfix" : "1h_","moments" : ["cmb","f_sync","f_dust","df_sync/dbeta","df_dust/dbeta","df_dust/dT","d2f_sync/dbeta2","d2f_dust/dT2","d2f_dust/dbetadT"], "comment" : "Hybrid"}
@@ -69,8 +70,7 @@ exprmnt["datadef"] = {
 
 exprmnt["fnames"]={}
 exprmnt["cmb_fname"]="smoothed_input_cmb_bmode_map_v2.fits"
-for key in range(len(exprmnt["datadef"].keys())):
-    adr="cMILC" + str(key).zfill(2)
+for adr in exprmnt["datadef"].keys():
     exprmnt["fnames"][adr]={}
     exprmnt["fnames"][adr]["cmb"]=exprmnt["simname"] + cmb_prefix
     exprmnt["fnames"][adr]["cmb"]=exprmnt["fnames"][adr]["cmb"]+exprmnt["datadef"][adr]["midfix"] + suffix
@@ -86,8 +86,7 @@ exprmnt["cl_fname"]="ffp10_lensedCls.dat"
 
 exprmnt["lbl"]={}
 exprmnt["npar"]={}
-for idx in range(len(exprmnt["datadef"].keys())):
-	adr="cMILC" + str(idx).zfill(2)
+for adr in exprmnt["datadef"].keys():
 	exprmnt["npar"][adr]=len(exprmnt["datadef"][adr]["moments"])
 	exprmnt["lbl"][adr]=adr+" : "
 	for imom,mom in  enumerate(exprmnt["datadef"][adr]["moments"]):

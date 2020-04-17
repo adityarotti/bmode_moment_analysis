@@ -79,8 +79,7 @@ def get_data(exprmnt,outpath=[],only_return_dict=True,verbose=False):
 			print "Failed to execute command"
 
 	# Get CMB solution maps
-	for idx in range(len(dd.exprmnt["datadef"].keys())):
-		adr="cMILC" +str(idx).zfill(2)
+	for adr in dd.exprmnt["datadef"].keys():
 		cmd = base_cmd + dd.exprmnt["indatapath"] + "/" + dd.exprmnt["fnames"][adr]["cmb"] + " " + outpath + "/"
 		filename=outpath + "/" + dd.exprmnt["fnames"][adr]["cmb"]
 		if verbose:
