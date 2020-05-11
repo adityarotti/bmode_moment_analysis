@@ -48,6 +48,7 @@ class setup_r_forecasts(object):
 		else:
 			self.mask=mask
 	
+		self.bin_mask=np.zeros_like(self.mask) ; self.bin_mask[self.mask>0.99]=1.
 		self.fsky=np.sum(self.mask)/np.size(self.mask)
 		self.nside=h.get_nside(self.mask)
 		self.masklmax=2*self.nside
@@ -58,7 +59,7 @@ class setup_r_forecasts(object):
 
 	def run_spectral_analysis(self,):
 		self.clbin={}
-		
+		bad=-1.6375e+30
 		# Get the theory lensed Cls
 #		data=np.loadtxt(project_path + "/dataout/pico/ffp10_lensedCls.dat")
 		data=np.loadtxt(self.dd["outdatapath"] + "ffp10_lensedCls.dat")
@@ -90,6 +91,7 @@ class setup_r_forecasts(object):
 		for adr in self.adr_list:
 			# Obs.
 			obs=h.read_map(self.dd["outdatapath"] + self.dd["fnames"][adr]["cmb"],verbose=False)
+#			obs[self.bin_mask==0]=bad ; obs=h.remove_dipole(obs)
 			cldata=h.alm2cl(h.map2alm(obs*self.mask,lmax=self.lmax))
 			self.lbin,self.clbin["obs"][adr]=self.master.return_bmcs(cldata)
 			# Noise.
@@ -98,10 +100,12 @@ class setup_r_forecasts(object):
 			self.lbin,self.clbin["noise"][adr]=self.master.return_bmcs(cldata)
 			# Frg. - estimated from obs, cmb and noise
 			data=obs-cmb-noise
+#			data[self.bin_mask==0]=bad ; data=h.remove_dipole(data)
 			cldata=h.alm2cl(h.map2alm(data*self.mask,lmax=self.lmax))
 			self.lbin,self.clbin["frg"][adr]=self.master.return_bmcs(cldata)
 			# Frg - directly estimated in component separation
 			data=h.read_map(self.dd["outdatapath"] + self.dd["fnames"][adr]["frg"],verbose=False)
+#			data[self.bin_mask==0]=bad ; data=h.remove_dipole(data)
 			cldata=h.alm2cl(h.map2alm(data*self.mask,lmax=self.lmax))
 			self.lbin,self.clbin["frg1"][adr]=self.master.return_bmcs(cldata)
 

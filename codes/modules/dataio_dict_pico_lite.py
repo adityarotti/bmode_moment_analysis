@@ -14,16 +14,16 @@ frg_prefix="_CMB_NILC_FG"
 suffix="res40acm.fits"
 
 mom_lbl={}
-mom_lbl["cmb"]=r"$I_{\rm CMB}$"
-mom_lbl["f_sync"]=r"$I_{\rm sync}$"
-mom_lbl["df_sync/dbeta"]=r"$\frac{d I_{\rm sync}}{d \beta}$"
-mom_lbl["d2f_sync/dbeta2"]=r"$\frac{d^2 I_{\rm sync}}{d^2 \beta}$"
-mom_lbl["f_dust"]=r"$I_{\rm dust}$"
-mom_lbl["df_dust/dbeta"]=r"$\frac{d I_{\rm dust}}{d \beta}$"
-mom_lbl["df_dust/dT"]=r"$\frac{d I_{\rm dust}}{d T}$"
-mom_lbl["d2f_dust/dbeta2"]=r"$\frac{d^2 I_{\rm dust}}{d^2 \beta}$"
-mom_lbl["d2f_dust/dbetadT"]=r"$\frac{d^2 I_{\rm dust}}{d \beta d T}$"
-mom_lbl["d2f_dust/dT2"]=r"$\frac{d^2 I_{\rm dust}}{d^2 T}$"
+mom_lbl["cmb"]=r"$f_{\rm CMB}$"
+mom_lbl["f_sync"]=r"$f_{\rm sync}$"
+mom_lbl["df_sync/dbeta"]=r"$\frac{d f_{\rm sync}}{d \beta}$"
+mom_lbl["d2f_sync/dbeta2"]=r"$\frac{d^2 f_{\rm sync}}{d^2 \beta}$"
+mom_lbl["f_dust"]=r"$f_{\rm dust}$"
+mom_lbl["df_dust/dbeta"]=r"$\frac{d f_{\rm dust}}{d \beta}$"
+mom_lbl["df_dust/dT"]=r"$\frac{d f_{\rm dust}}{d T}$"
+mom_lbl["d2f_dust/dbeta2"]=r"$\frac{d^2 f_{\rm dust}}{d^2 \beta}$"
+mom_lbl["d2f_dust/dbetadT"]=r"$\frac{d^2 f_{\rm dust}}{d \beta d T}$"
+mom_lbl["d2f_dust/dT2"]=r"$\frac{d^2 f_{\rm dust}}{d^2 T}$"
 
 # Descoped PICO --------------------------------------------------------------
 # Frequencies : 20-462 GHz

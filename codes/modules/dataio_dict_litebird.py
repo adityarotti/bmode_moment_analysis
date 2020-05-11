@@ -14,16 +14,16 @@ frg_prefix="_CMB_NILC_FG"
 suffix="res40acm.fits"
 
 mom_lbl={}
-mom_lbl["cmb"]=r"$I_{\rm CMB}$"
-mom_lbl["f_sync"]=r"$I_{\rm sync}$"
-mom_lbl["df_sync/dbeta"]=r"$\frac{d I_{\rm sync}}{d \beta}$"
-mom_lbl["d2f_sync/dbeta2"]=r"$\frac{d^2 I_{\rm sync}}{d^2 \beta}$"
-mom_lbl["f_dust"]=r"$I_{\rm dust}$"
-mom_lbl["df_dust/dbeta"]=r"$\frac{d I_{\rm dust}}{d \beta}$"
-mom_lbl["df_dust/dT"]=r"$\frac{d I_{\rm dust}}{d T}$"
-mom_lbl["d2f_dust/dbeta2"]=r"$\frac{d^2 I_{\rm dust}}{d^2 \beta}$"
-mom_lbl["d2f_dust/dbetadT"]=r"$\frac{d^2 I_{\rm dust}}{d \beta d T}$"
-mom_lbl["d2f_dust/dT2"]=r"$\frac{d^2 I_{\rm dust}}{d^2 T}$"
+mom_lbl["cmb"]=r"$f_{\rm CMB}$"
+mom_lbl["f_sync"]=r"$f_{\rm sync}$"
+mom_lbl["df_sync/dbeta"]=r"$\frac{d f_{\rm sync}}{d \beta}$"
+mom_lbl["d2f_sync/dbeta2"]=r"$\frac{d^2 f_{\rm sync}}{d^2 \beta}$"
+mom_lbl["f_dust"]=r"$f_{\rm dust}$"
+mom_lbl["df_dust/dbeta"]=r"$\frac{d f_{\rm dust}}{d \beta}$"
+mom_lbl["df_dust/dT"]=r"$\frac{d f_{\rm dust}}{d T}$"
+mom_lbl["d2f_dust/dbeta2"]=r"$\frac{d^2 f_{\rm dust}}{d^2 \beta}$"
+mom_lbl["d2f_dust/dbetadT"]=r"$\frac{d^2 f_{\rm dust}}{d \beta d T}$"
+mom_lbl["d2f_dust/dT2"]=r"$\frac{d^2 f_{\rm dust}}{d^2 T}$"
 
 # LITEBIRD --------------------------------------------------------------
 exprmnt=collections.OrderedDict()
@@ -31,8 +31,14 @@ exprmnt=collections.OrderedDict()
 #exprmnt["outdatapath"]= project_path +  "/dataout/litebird/"
 #exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/LiteBIRD/outputs22DOUBLE/"
 #Final runs
-exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/LiteBIRD/outputs22DOUBLE2/"
-exprmnt["outdatapath"]= project_path +  "/dataout/litebird_double/"
+#exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/LiteBIRD/outputs22DOUBLE2/"
+#exprmnt["outdatapath"]= project_path +  "/dataout/litebird_double/"
+
+#Final runs - Inhouse simulations using PySM
+#exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/LiteBIRD/outputs22DOUBLE2_AR/"
+#exprmnt["outdatapath"]= project_path +  "/dataout/litebird_double_ar/"
+exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/LiteBIRD/outputs22DOUBLE2_AR2/"
+exprmnt["outdatapath"]= project_path +  "/dataout/litebird_double_ar_new/"
 
 exprmnt["simname"]="LITEBIRD"
 exprmnt["datadef"] = {
@@ -45,6 +51,7 @@ exprmnt["datadef"] = {
 "cMILC06" : {"midfix" : "3m1_" , "moments":["cmb","f_sync","f_dust", "df_dust/dbeta"], "comment" : None},
 "cMILC07" : {"midfix" : "2m2m_", "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta","df_dust/dbeta"], "comment" : None},
 "cMILC08" : {"midfix" : "2m3m_" , "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta", "df_dust/dT"], "comment" : None},
+#"cMILC12" : {"midfix" : "2h_" , "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta"], "comment" : "Hybrid"},
 #"cMILC09" : {"midfix" : "2m2m1m_" , "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta","df_dust/dbeta", "df_dust/dT", "d2f_sync/dbeta2"], "comment" : None},
 #"cMILC10" : {"midfix" : "2m2m2m_" , "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta", "df_dust/dT", "d2f_sync/dbeta2", "d2f_dust/dT2"], "comment" : None},
 #"cMILC11" : {"midfix" : "1_" , "moments" : ["cmb","f_sync", "f_dust", "df_sync/dbeta", "df_dust/dbeta", "df_dust/dT","d2f_sync/dbeta2", "d2f_dust/dT2", "d2f_dust/dbetadT"], "comment" : None},
