@@ -41,20 +41,24 @@ exprmnt=collections.OrderedDict()
 #exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/PICO/90.91NEED/"
 #exprmnt["outdatapath"]= project_path + "/dataout/pico_low_needlets/"
 #Final runs
-exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/PICO/90.91DOUBLE2/"
-exprmnt["outdatapath"]= project_path + "/dataout/pico_double/"
+#exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/PICO/90.91DOUBLE2/"
+#exprmnt["outdatapath"]= project_path + "/dataout/pico_double/"
 #Final runs - testing with masking the B-mode map before covariance evaluation.
 #exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/PICO/90.91DOUBLE3/"
 #exprmnt["outdatapath"]= project_path + "/dataout/pico_double_covmask/"
 #Final runs - PICO MHD simulations.
-#exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/PICO/90.96/"
-#exprmnt["outdatapath"]= project_path + "/dataout/pico_mhd/"
+exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/PICO/90.96/"
+exprmnt["outdatapath"]= project_path + "/dataout/pico_mhd/"
 #Final runs - PICO Inhouse simulations using PySM.
 #exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/PICO/90.91DOUBLE2_AR/"
 #exprmnt["outdatapath"]= project_path + "/dataout/pico_double_ar/"
 #Final runs - PICO_clem Inhouse simulations using PySM.
 #exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/PICO/90.91DOUBLE2_CP/"
 #exprmnt["outdatapath"]= project_path + "/dataout/pico_double_cp/"
+#Final runs - using a different dust temperature for low l moments T_dust=15
+#exprmnt["indatapath"]="/scratch/nas_vulture/scratch/mremazei/PICO/90.91DOUBLE4/"
+#exprmnt["outdatapath"]= project_path + "/dataout/pico_double_T15/"
+
 
 
 exprmnt["simname"]="PICO"

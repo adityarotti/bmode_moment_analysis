@@ -152,13 +152,13 @@ class setup_r_forecasts(object):
 			like_map[:,il]=fn_like(self.rvalues)
 		return like_map
 
-	def tabulate_rstat(self,sigma=0.66,ul=0.95,tol=1e-2):
+	def tabulate_rstat(self,sigma=0.66,ul=0.95,ul_snr=2.,tol=1e-2):
 		self.rstat=collections.OrderedDict()
 		for adr in self.adr_list:
 			self.rstat[adr]=collections.OrderedDict()
 			for Alens in self.Alens_vals:
 				try:
-					self.rstat[adr][Alens]=return_pdf_char(self.rvalues,self.rlike_dict[adr][Alens],tol=tol,sigma=sigma,ul=ul)
+					self.rstat[adr][Alens]=return_pdf_char(self.rvalues,self.rlike_dict[adr][Alens],tol=tol,sigma=sigma,ul=ul,ul_snr=ul_snr)
 				except:
 					print "Failed at",adr,Alens
 
